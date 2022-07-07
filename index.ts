@@ -2,7 +2,6 @@ import { BitcoinCashService } from "./services/BitcoinCashService";
 import express, { Express, Request, Response } from "express";
 import "dotenv/config";
 import { TransactionRequest } from "./models/transaction-request";
-const { default: axios } = require("axios");
 
 const app: Express = express();
 app.use(express.json());
