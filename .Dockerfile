@@ -8,6 +8,7 @@ WORKDIR ./
 COPY ["package.json", "package-lock.json*", "./"]
 
 RUN yarn install
+RUN yarn build
 
 COPY . .
 
