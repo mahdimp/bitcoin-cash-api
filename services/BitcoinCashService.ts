@@ -194,12 +194,9 @@ export class BitcoinCashService {
     };
   }
 
-  async getBalance(addr, verbose) {
+  async getBalance(addr: string, verbose:boolean) {
     try {
       const result = await bchjs.Electrumx.balance(addr);
-
-      if (verbose) console.log(result);
-
       const satBalance =
         Number(result.balance.confirmed) + Number(result.balance.unconfirmed);
 

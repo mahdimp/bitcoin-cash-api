@@ -1,11 +1,12 @@
 import { BitcoinCashService } from "./services/BitcoinCashService";
 import express, { Express, Request, Response } from "express";
 import "dotenv/config";
+import { TransactionRequest } from "./models/transaction-request";
 const { default: axios } = require("axios");
 
 const app: Express = express();
 app.use(express.json());
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 1361;
 const bitcoinCashService = new BitcoinCashService();
 
 app.get(
@@ -25,14 +26,7 @@ app.get(
   }
 );
 
-interface Transaction {
-  amount?: string;
-  to: string;
-  from: string;
-  secret: string;
-}
-
-app.post("/transaction", async (req: Request<Transaction>, res) => {
+app.post("/transaction", async (req: Request<TransactionRequest>, res: Response) => {
   try {
     const { amount, secret, from, to } = req.body;
     let result;
